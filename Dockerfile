@@ -7,6 +7,7 @@ RUN apt-get update && \
     nodejs \
     default-mysql-client
 
+RUN apt-get install tzdata
 
 ENV APP_HOME /myapp
 RUN mkdir $APP_HOME
