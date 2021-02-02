@@ -1,0 +1,45 @@
+common: &common
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  pool: 5
+  username: <%= ENV['database_user'] %>
+  password: <%= ENV['database_pass'] %>
+  host: <%= ENV['database_host'] %>
+  port: <%= ENV['database_port'] %>
+  socket: <%= ENV['database_socket'] %>
+
+# Development
+development:
+  <<: *common
+  database: voiceapp_development
+
+# Test
+test:
+  <<: *common
+  database: voiceapp_test
+
+# Prestage
+prestage:
+  <<: *common
+  database: voiceapp_prestage
+  socket: /tmp/mysql.sock
+
+# Production
+production: &production
+  <<: *common
+  pool: 100
+  database: voiceapp_production
+
+production_slave: &production_slave
+  <<: *production
+  host: <%= ENV['database_slave_host'] %>
+  username: <%= ENV['database_slave_user'] %>
+  password: <%= ENV['database_slave_pass'] %>
+
+# Staging
+staging:
+  <<: *production
+
+staging_slave:
+  <<: *production_slave
