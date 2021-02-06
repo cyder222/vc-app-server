@@ -17,5 +17,21 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+     # 主にdeviseを使うのに必要
+     config.middleware.use Rack::MethodOverride
+     config.middleware.use ActionDispatch::Cookies
+     config.middleware.use ActionDispatch::Session::CookieStore
+     config.middleware.use ActionDispatch::Flash
+ 
+     # クロスドメイン対策は入れておいたほうが良い
+     config.middleware.insert_before 0, Rack::Cors do
+       allow do
+         origins '*'
+         resource '*',
+                  :headers => :any,
+                  :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                  :methods => [:get, :post, :options, :delete, :put]
+       end
   end
+end
 end

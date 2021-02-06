@@ -32,10 +32,16 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
-gem 'omniauth'
+gem 'omniauth', '1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'swagger-blocks'
 gem 'swagger_ui_engine'
+
+# for rspec
+gem "rspec-rails"
+gem "factory_bot_rails"
+gem "faker"
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
