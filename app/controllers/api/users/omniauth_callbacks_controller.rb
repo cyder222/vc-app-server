@@ -8,12 +8,6 @@ module Users
         set_token_on_resource
         create_auth_params
   
-        # ここは使わないのでコメントアウト
-        #if resource_class.devise_modules.include?(:confirmable)
-        #  # don't send confirmation email!!!
-        #  @resource.skip_confirmation!
-        #end
-  
         sign_in(:user, @resource, store: false, bypass: false)
   
         # 動作確認用にユーザ情報を保存できたらjsonをそのまま返す処理
