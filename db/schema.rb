@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_185320) do
+ActiveRecord::Schema.define(version: 2021_02_11_132259) do
+
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "title"
+    t.string "room_identity"
+    t.string "description"
+    t.integer "max_user_num"
+    t.string "main_language"
+    t.bigint "admin_usesr_id_id"
+    t.bigint "category_id_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_usesr_id_id"], name: "index_rooms_on_admin_usesr_id_id"
+    t.index ["category_id_id"], name: "index_rooms_on_category_id_id"
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -33,4 +53,6 @@ ActiveRecord::Schema.define(version: 2021_02_02_185320) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "rooms", "categories", column: "category_id_id"
+  add_foreign_key "rooms", "users", column: "admin_usesr_id_id"
 end
