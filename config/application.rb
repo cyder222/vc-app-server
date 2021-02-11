@@ -10,28 +10,21 @@ module Myapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-     # 主にdeviseを使うのに必要
+
      config.middleware.use Rack::MethodOverride
      config.middleware.use ActionDispatch::Cookies
      config.middleware.use ActionDispatch::Session::CookieStore
      config.middleware.use ActionDispatch::Flash
  
-     # クロスドメイン対策は入れておいたほうが良い
+     # クロスドメイン対策はとりあえず全部受ける
      config.middleware.insert_before 0, Rack::Cors do
-       allow do
-         origins '*'
-         resource '*',
-                  :headers => :any,
-                  :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-                  :methods => [:get, :post, :options, :delete, :put]
-       end
-  end
-end
+        allow do
+          origins '*'
+          resource '*',
+                    :headers => :any,
+                    :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                    :methods => [:get, :post, :options, :delete, :put]
+        end
+      end
+    end
 end
