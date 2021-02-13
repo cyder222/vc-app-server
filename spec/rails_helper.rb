@@ -61,4 +61,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+   # configured for committee-rails
+   config.add_setting :committee_options
+   config.committee_options = {
+     schema_path: Rails.root.join('etc', 'docs', 'swagger', 'schema','reference','rooms.v1.yaml').to_s
+   }
 end
