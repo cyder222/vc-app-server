@@ -6,8 +6,8 @@ class CreateRooms < ActiveRecord::Migration[6.1]
       t.string :description
       t.integer :max_user_num
       t.string :main_language
-      t.references :admin_usesr_id, foreign_key: { to_table: :users }
-      t.references :category_id, foreign_key: {to_table: :categories}
+      t.references :admin_user, foreign_key: { to_table: :users }
+      t.references :category, foreign_key: {to_table: :categories}
 
       t.timestamps
     end
