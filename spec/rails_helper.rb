@@ -62,8 +62,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
    # configured for committee-rails
+   config.include Committee::Rails::Test::Methods
    config.add_setting :committee_options
    config.committee_options = {
-     schema_path: Rails.root.join('etc', 'docs', 'swagger', 'schema','reference','rooms.v1.yaml').to_s
+     schema_path: Rails.root.join('etc', 'docs', 'swagger', 'scheme','reference','rooms.v1.yaml').to_s
    }
+   config.include FactoryBot::Syntax::Methods
 end
