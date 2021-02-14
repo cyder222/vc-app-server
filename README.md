@@ -23,10 +23,21 @@ http://myapp.test.com
 ### swagger
 http://localhost:8080
 
+## 開発の流れ
+1. APIスキーマを編集
+2. APIスキーマを取り込んで、それをもとにテストを書く
+3. テストが通るようにserializer、controllerなどを設定していく
 
-## apiのスキーマ定義について
+### apiのスキーマ定義について
 別リポジトリでスキーマを管理していて、サブモジュールとしてもってきています。
 
 https://stoplight.io/
 
 スキーマはなるべく、手でいじらず、上記サイトからGUI経由で編集してください。
+
+### テストについて
+committeeを使っています。
+@TODO 詳細を書く
+
+### serializerなどの実装について
+ActiveRecordSerializerを使っています。
