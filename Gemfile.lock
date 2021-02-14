@@ -93,6 +93,15 @@ GEM
     case_transform (0.2)
       activesupport
     childprocess (3.0.0)
+    committee (4.3.0)
+      json_schema (~> 0.14, >= 0.14.3)
+      openapi_parser (>= 0.11.1)
+      rack (>= 1.5)
+    committee-rails (0.5.1)
+      actionpack
+      activesupport
+      committee (>= 3.0.0)
+      railties
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     devise (4.7.3)
@@ -123,6 +132,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    json_schema (0.20.9)
     jsonapi-renderer (0.2.2)
     jwt (2.2.2)
     listen (3.4.1)
@@ -166,6 +176,7 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    openapi_parser (0.12.1)
     orm_adapter (0.5.0)
     public_suffix (4.0.6)
     puma (5.2.0)
@@ -298,6 +309,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  committee
+  committee-rails
   devise
   devise_token_auth!
   factory_bot_rails
