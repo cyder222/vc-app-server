@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## このリポジトリについて
+ボイスチャットアプリのアプリケーションサーバーのリポジトリです。
+voicechatアプリについては、wikiを参照してください。
 
-Things you may want to cover:
+## インストール
+### hostファイルの編集
+以下をhostファイルに追加
+```
+myapp.test.com   127.0.0.1
+```
 
-* Ruby version
+### dockerビルド
+```
+docker-compose build
+docker-compose up
+```
 
-* System dependencies
+## 開発環境
+### サーバー
+http://myapp.test.com
+### swagger
+http://localhost:8080
 
-* Configuration
 
-* Database creation
+## apiのスキーマ定義について
+別リポジトリでスキーマを管理していて、サブモジュールとしてもってきています。
 
-* Database initialization
+https://stoplight.io/
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+スキーマはなるべく、手でいじらず、上記サイトからGUI経由で編集してください。
