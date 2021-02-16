@@ -1,7 +1,7 @@
 module Api
     class RoomsController < Api::BaseController
         def show
-            id = parmas[:id]
+            id = params[:id]
             room = Room.find(id)
             render json: room, serializer: RoomSerializer
         end
