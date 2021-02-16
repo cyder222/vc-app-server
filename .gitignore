@@ -30,3 +30,4 @@
 /config/secrets.yml
 
 /.docker/db/*
+node_modules
