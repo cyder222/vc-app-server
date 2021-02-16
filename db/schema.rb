@@ -19,18 +19,18 @@ ActiveRecord::Schema.define(version: 20_210_211_132_259) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table 'rooms', charset: 'utf8mb4', collation: 'utf8mb4_bin', force: :cascade do |t|
-    t.string 'title'
-    t.string 'room_identity'
-    t.string 'description'
-    t.integer 'max_user_num'
-    t.string 'main_language'
-    t.bigint 'admin_usesr_id_id'
-    t.bigint 'category_id_id'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['admin_usesr_id_id'], name: 'index_rooms_on_admin_usesr_id_id'
-    t.index ['category_id_id'], name: 'index_rooms_on_category_id_id'
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "title"
+    t.string "room_identity"
+    t.string "description"
+    t.integer "max_user_num"
+    t.string "main_language"
+    t.bigint "admin_user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_user_id"], name: "index_rooms_on_admin_user_id"
+    t.index ["category_id"], name: "index_rooms_on_category_id"
   end
 
   create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_bin', force: :cascade do |t|
@@ -54,6 +54,6 @@ ActiveRecord::Schema.define(version: 20_210_211_132_259) do
     t.index %w[uid provider], name: 'index_users_on_uid_and_provider', unique: true
   end
 
-  add_foreign_key 'rooms', 'categories', column: 'category_id_id'
-  add_foreign_key 'rooms', 'users', column: 'admin_usesr_id_id'
+  add_foreign_key "rooms", "categories"
+  add_foreign_key "rooms", "users", column: "admin_user_id"
 end
