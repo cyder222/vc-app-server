@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence(:title, "title_1")
   sequence(:description, "description_1")

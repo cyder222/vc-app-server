@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Puma is fast server
 
 workers(1)
