@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,11 +63,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-   # configured for committee-rails
-   config.include Committee::Rails::Test::Methods
-   config.add_setting :committee_options
-   config.committee_options = {
-     schema_path: Rails.root.join('etc', 'docs', 'swagger', 'scheme','reference','rooms.v1.yaml').to_s
-   }
-   config.include FactoryBot::Syntax::Methods
+  # configured for committee-rails
+  config.include Committee::Rails::Test::Methods
+  config.add_setting :committee_options
+  config.committee_options = {
+    schema_path: Rails.root.join('etc', 'docs', 'swagger', 'scheme', 'reference', 'rooms.v1.yaml').to_s
+  }
+  config.include FactoryBot::Syntax::Methods
 end
