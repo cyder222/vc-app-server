@@ -27,5 +27,7 @@ module Myapp
                  methods: %i(get post options delete put)
       end
     end
+    schema_path = Rails.root.join("etc/docs/swagger/scheme/reference/rooms.v1.yaml").to_s
+    config.middleware.use Committee::Middleware::RequestValidation, schema_path: schema_path
   end
 end
