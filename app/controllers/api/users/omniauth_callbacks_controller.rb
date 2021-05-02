@@ -61,6 +61,7 @@ module Api
       end
 
       def getting_devise_mapping
+        Rails.logger.info(request.env['omniauth.params']['resource_class'])
         [request.env['omniauth.params']['namespace_name'],
          request.env['omniauth.params']['resource_class'].underscore.tr('/', '_')].compact.join('_')
       rescue NoMethodError

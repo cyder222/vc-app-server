@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def sign_in?
-    render json: { message: 'not login'}, status: 404 unless user_signed_in?
+  #
+  # before action :require_sign_in only[:create]
+  def require_sign_in
+    render json: { error: 'did not login'}, status: 400 unless user_signed_in?
   end
 end
