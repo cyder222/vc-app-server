@@ -3,7 +3,6 @@ require 'rails_helper'
 
 RSpec.describe 'post /api/rooms', type: :request do
     let(:user) { FactoryBot.create(:user)}
-    let(:auth_headers) { user.create_new_auth_token }
     let(:category) { FactoryBot.create(:category)}
     let(:params) {{
         title: "test room",
@@ -20,9 +19,7 @@ RSpec.describe 'post /api/rooms', type: :request do
 		headers: {
 			'CONTENT_TYPE' => 'application/json',
 			'ACCEPT' => 'application/json',
-			'Uid' => auth_headers['uid'],
-            'Access-Token' => auth_headers['access-token'],
-            'Client' => auth_headers['client']
+            'Authorization' => "Bearer #{user.oauth_token}"
 		}
 	}
     it 'create rooms' do
