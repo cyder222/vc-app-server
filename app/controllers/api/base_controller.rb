@@ -2,10 +2,10 @@
 
 module Api
   class BaseController < ActionController::API
-    include DeviseTokenAuth::Concerns::SetUserByToken
+    include CurrentUserByToken
 
-    def require_sign_in
-      render json: { error: 'did not login'}, status: 400 unless user_signed_in?
+    def require_api_user
+      render json: { error: 'did not login'}, status: 400 if logged_in?
     end
   end
 end
