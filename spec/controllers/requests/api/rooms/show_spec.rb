@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'GET /api/rooms/:id', type: :request do
   subject { get "/api/rooms/#{rooms_uid}" }
 

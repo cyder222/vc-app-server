@@ -5,7 +5,7 @@ module Api
     include CurrentUserByToken
 
     def require_api_user
-      render json: { error: 'did not login'}, status: 400 if logged_in?
+      render json: { error: 'did not login'}, status: 403 if logged_in?
     end
   end
 end

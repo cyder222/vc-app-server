@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'GET /api/rooms', type: :request do
   subject { get '/api/rooms', params: params, headers: headers }
 

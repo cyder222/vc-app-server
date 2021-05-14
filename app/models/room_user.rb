@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
 class RoomUser < ApplicationRecord
-  has_many :users
-  has_many :rooms
+  belongs_to :user
+  belongs_to :room
 
-  def join(room:, user:)
-    room_user = RoomUser.find_by(room: room, user: user)
+  def self.join(room:, user:)
+    room_user = RoomUser.find_by(room_id: room.id, user_id: user.id)
     return :already_exist unless room_user.nil?
-    room_user = RoomUser.new(user: user, room: room)
+    room_user = RoomUser.new
+    room_user.user = user
+    room_user.room = room
     room_user.save!
   end
-  def leave(room:, user:)
-    room_user = RoomUser.find_by(room: room, user: user)
+  def self.leave(room:, user:)
+    room_user = RoomUser.find_by(room_id: room.id, user_id: user.id)
     return :not_exist if room_user.nil?
     room_user.destroy!
   end
