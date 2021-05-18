@@ -24,5 +24,11 @@ module Api
     def room_params
       params.permit(:title, :description, :max_user_num, :main_language, :category_id)
     end
+
+    def room_admin?
+      room_id = params[:id]
+      room = Room.find_by(id: room_id)
+      return room.admin_user_id == current_user.id
+    end
   end
 end

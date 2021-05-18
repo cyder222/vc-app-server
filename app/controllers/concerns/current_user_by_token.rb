@@ -5,11 +5,11 @@ module CurrentUserByToken
     end
   
     def current_user?(user)
-      user == @current_token_user
+      user == current_user
     end
   
     def logged_in?
-      !@current_token_user.nil?
+      !@current_user.nil?
     end
   
     def log_out
