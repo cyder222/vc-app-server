@@ -71,5 +71,4 @@ RSpec.configure do |config|
     parse_response_by_content_type: true
   }
   config.include FactoryBot::Syntax::Methods
-
 end

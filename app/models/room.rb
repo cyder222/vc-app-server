@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'securerandom'
 
 class Room < ApplicationRecord
@@ -9,11 +10,13 @@ class Room < ApplicationRecord
   before_save :set_uid
 
   def set_uid
-    self.room_identity = uuid if self.room_identity.nil?
+    self.room_identity = uuid if room_identity.nil?
   end
+
   private
+
   def uuid
     # とりあえず、ランダムな文字列。ユーザーは実際にこれを打ち込むので、覚えやすいようにこういう風に分ける
-    SecureRandom.hex(3) + '-' + SecureRandom.hex(3) + '-' + SecureRandom.hex(3)
+    "#{SecureRandom.hex(3)}-#{SecureRandom.hex(3)}-#{SecureRandom.hex(3)}"
   end
 end

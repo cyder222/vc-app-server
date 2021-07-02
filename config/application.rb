@@ -21,13 +21,11 @@ module Myapp
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*',
-                 headers: :any,
-                 expose: %w(access-token expiry token-type uid client),
-                 methods: %i(get post options delete put)
+        resource '*', 　headers: :any, expose: %w(access-token expiry token-type uid client apikey),
+　methods: %i(get post put patch delete options head)
       end
     end
-    schema_path = Rails.root.join("etc/docs/swagger/scheme/reference/rooms.v1.yaml").to_s
+    schema_path = Rails.root.join('etc/docs/swagger/scheme/reference/rooms.v1.yaml').to_s
     config.middleware.use Committee::Middleware::RequestValidation, schema_path: schema_path
   end
 end

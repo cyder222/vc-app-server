@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   #
   # before action :require_sign_in only[:create]
   def require_sign_in
-    render json: { error: 'did not login'}, status: 400 unless user_signed_in?
+    render json: { error: 'did not login' }, status: 400 unless user_signed_in?
   end
 end

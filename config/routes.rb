@@ -3,8 +3,13 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :categories, only: %i(index)
-    resources :rooms, only: %i(index show create) do 
+    resources :rooms, only: %i(index show create) do
       resources :users, only: %i(index create destroy), controller: 'rooms/users'
+    end
+    resources :users, controller: :users, only: %i(show) do
+      collection do
+        get :current
+      end
     end
   end
 
