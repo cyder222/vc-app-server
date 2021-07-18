@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class User < ActiveRecord::Base
   has_many :room_users
   has_many :rooms, through: :rooms_users
