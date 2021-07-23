@@ -1,43 +1,57 @@
 # README
 
 ## このリポジトリについて
+
 ボイスチャットアプリのアプリケーションサーバーのリポジトリです。
-voicechatアプリについては、wikiを参照してください。
+voicechat アプリについては、wiki を参照してください。
 
 ## インストール
-### hostファイルの編集
-以下をhostファイルに追加
+
+### host ファイルの編集
+
+以下を host ファイルに追加
+
 ```
 myapp.test.com   127.0.0.1
 ```
 
-### dockerビルド
+### docker ビルド
+
 ```
+git submodule update --init --recursive
 docker-compose build
 docker-compose up
 ```
 
 ## 開発環境
+
 ### サーバー
+
 http://myapp.test.com
+
 ### swagger
+
 http://localhost:8080
 
 ## 開発の流れ
-1. APIスキーマを編集
-2. APIスキーマを取り込んで、それをもとにテストを書く
-3. テストが通るようにserializer、controllerなどを設定していく
 
-### apiのスキーマ定義について
+1. API スキーマを編集
+2. API スキーマを取り込んで、それをもとにテストを書く
+3. テストが通るように serializer、controller などを設定していく
+
+### api のスキーマ定義について
+
 別リポジトリでスキーマを管理していて、サブモジュールとしてもってきています。
 
 https://stoplight.io/
 
-スキーマはなるべく、手でいじらず、上記サイトからGUI経由で編集してください。
+スキーマはなるべく、手でいじらず、上記サイトから GUI 経由で編集してください。
 
 ### テストについて
-committeeを使っています。
+
+committee を使っています。
 @TODO 詳細を書く
 
-### serializerなどの実装について
-ActiveRecordSerializerを使っています。
+### serializer などの実装について
+
+ActiveRecordSerializer を使っています。
