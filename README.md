@@ -20,6 +20,8 @@ myapp.test.com   127.0.0.1
 ```
 git submodule update --init --recursive
 docker-compose build
+docker-compose run web bin/setup
+docker-compose run web bin/rails db:seed
 docker-compose up
 ```
 
