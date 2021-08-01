@@ -15,10 +15,12 @@ voicechat アプリについては、wiki を参照してください。
 myapp.test.com   127.0.0.1
 ```
 
-### secrets ファイルの追加
+### env ファイルの追加
 
-config/secrets.default.yml を参考に、config/secrets.yml を作成する。
-各種値は、環境によって変更する
+.env というファイルをトップディレクトリに作って、以下の二つの値をいれる
+（hogehoge, piyopiyo には、google oauth のキーを入れる）
+google_oauth_secret="hogehoge"
+google_oauth_key="piyopiyo"
 
 ### docker ビルド
 
