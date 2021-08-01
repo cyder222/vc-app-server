@@ -32,3 +32,4 @@
 /.docker/db/*
 !/.docker/db/.keep
 node_modules
+.env
