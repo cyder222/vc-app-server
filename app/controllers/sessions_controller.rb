@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:refresh_token] = user.oauth_refresh_token
       flash[:uid] = user.id
 
-      redirect_to "http://localhost:3001?uid=#{user.uid}&auth_token=#{user.oauth_token}"
+      redirect_to "#{Rails.configuration.x.frontend}?uid=#{user.uid}&auth_token=#{user.oauth_token}"
     else
       redirect_to new_session_path
     end
