@@ -77,5 +77,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << 'myapp.test.com'
   config.x.host = 'http://myapp.test.com'
-  consig.x.frontend = 'http://localhost:3001'
+  config.x.frontend = 'http://localhost:3001'
 end

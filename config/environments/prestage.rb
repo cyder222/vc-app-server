@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/integer/time'
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -60,6 +58,8 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.assets.initialize_on_precompile = false
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
@@ -78,5 +78,5 @@ Rails.application.configure do
   config.hosts << 'myapp.test.com'
 
   config.x.host = 'https://vc-app-server-staging.herokuapp.com/'
-  consig.x.frontend = 'https://voicechat-app-front.vercel.app/'
+  config.x.frontend = 'https://voicechat-app-front.vercel.app/'
 end
