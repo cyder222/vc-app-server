@@ -2,12 +2,13 @@ FROM ruby:2.6.6
 
 ENV LANG C.UTF-8
 
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y npm && npm install --global yarn && \
     apt-get install -y build-essential \
     nodejs \
     default-mysql-client
 
 RUN apt-get install tzdata
+RUN bin/rails webpacker:install
 
 ENV APP_HOME /myapp
 RUN mkdir $APP_HOME
