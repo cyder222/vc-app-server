@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y npm && npm install --global yarn && \
     default-mysql-client
 
 RUN apt-get install tzdata
-RUN bin/rails webpacker:install
 
 ENV APP_HOME /myapp
 RUN mkdir $APP_HOME
@@ -21,5 +20,5 @@ ENV BUNDLE_APP_CONFIG $APP_HOME/.bundle
 RUN mkdir $APP_HOME/.bundle
 
 RUN bundle install
-
+RUN bin/rails webpacker:install
 EXPOSE 3000
