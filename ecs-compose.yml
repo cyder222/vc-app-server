@@ -22,9 +22,7 @@ services:
     ports:
       - "6379:6379"
   web:
-    build:
-      context: .
-    # image: 297403833140.dkr.ecr.ap-northeast-1.amazonaws.com/vc-app-server:vc-app-server
+    image: $AWS_ACCOUNT.dkr.ecr.ap-northeast-1.amazonaws.com/vc-app-server:vc-app-server
     ports:
       - "3000:3000"
     command: "bundle exec puma -C config/puma.rb"
