@@ -22,8 +22,8 @@ test:
 # Prestage
 prestage:
   <<: *common
+  url: <%= ENV['database_url'] %>
   database: voiceapp_prestage
-  socket: /tmp/mysql.sock
 
 # Production
 production: &production
