@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # for preflight request
+  match '*path' => 'options_request#preflight', via: [:options]
+
   namespace :api do
     resources :categories, only: %i(index)
     resources :rooms, only: %i(index show create) do
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
   resource :sessions, controller: :sessions, only: %i(new create destroy)
   get 'auth/:provider', to: 'sessions#new'
   get 'auth/:provider/callback', to: 'sessions#create'
