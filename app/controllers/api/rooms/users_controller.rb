@@ -4,15 +4,15 @@ module Api
       before_action :require_api_user, only: %i(create destroy)
 
       def index
-        room_id = params[:room_id]
-        room = Room.find_by(id: room_id)
+        room_identity_or_id = params[:room_id]
+        room = room_identity_or_id =~ /^[0-9]+$/ ? Room.find_by(id: room_identity_or_id) : Room.find_by(room_identity: room_identity_or_id)
         users = room.room_users.map { |room_user| room_user.user }
         render json: users, each_serializer: UserSerializer
       end
 
       def create
-        room_id = params[:room_id]
-        room = Room.find_by(id: room_id)
+        room_identity_or_id = params[:room_id]
+        room = room_identity_or_id =~ /^[0-9]+$/ ? Room.find_by(id: room_identity_or_id) : Room.find_by(room_identity: room_identity_or_id)
         RoomUser.join(room: room, user: current_user)
         render status: :ok, json: @controller.to_json
       end

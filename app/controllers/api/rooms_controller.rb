@@ -3,8 +3,8 @@ module Api
     before_action :require_api_user, only: [:create]
 
     def show
-      id = params[:id]
-      room = Room.find(id)
+      room_identity_or_id = params[:id]
+      room = room_identity_or_id =~ /^[0-9]+$/ ? Room.find_by(id: room_identity_or_id) : Room.find_by(room_identity: room_identity_or_id)
       render json: room, serializer: RoomSerializer
     end
 
