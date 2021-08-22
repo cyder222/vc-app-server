@@ -20,5 +20,4 @@ ENV BUNDLE_APP_CONFIG $APP_HOME/.bundle
 RUN mkdir $APP_HOME/.bundle
 
 RUN bundle install
-RUN bin/rails webpacker:install
 EXPOSE 3000
