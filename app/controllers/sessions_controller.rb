@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     return Rails.logger.error('omaniauth.auth is empty') if request.env['omniauth.auth'].empty?
     origin = request.env['omniauth.origin'] || Rails.configuration.x.frontend
-
+    puts(request.env['omniauth.origin'])
     user = User.from_omniauth(request.env['omniauth.auth'])
     return Rails.logger.error("invalid omniauth parameter#{request.env['omniauth.auth']}") if user.nil?
 
