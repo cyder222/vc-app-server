@@ -11,7 +11,7 @@ module Api
 
     def show
       user_id = params[:id]
-      user = User.find_by(id: user_id)
+      user = User.find_by(uid: user_id)
       render json: user, serializer: UserSerializer
     end
   end
