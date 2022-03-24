@@ -64,3 +64,14 @@ committee を使っています。
 ### serializer などの実装について
 
 ActiveRecordSerializer を使っています。
+
+## staging 環境について
+
+heroku を利用しています。
+
+```
+heroku login
+git push heroku master
+```
+
+で push 可能です
