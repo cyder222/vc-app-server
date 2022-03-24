@@ -9,12 +9,7 @@ class SessionsController < ApplicationController
     return Rails.logger.error("invalid omniauth parameter#{request.env['omniauth.auth']}") if user.nil?
 
     if user.save
-      # header付きでroot_pathに飛ばす
-      flash[:auth_token] = user.oauth_token
-      flash[:refresh_token] = user.oauth_refresh_token
-      flash[:uid] = user.id
-
-      redirect_to "#{origin}?uid=#{user.uid}&auth_token=#{user.oauth_token}"
+      redirect_to "#{origin}&uid=#{user.uid}&auth_token=#{user.oauth_token}"
     else
       redirect_to new_session_path
     end
